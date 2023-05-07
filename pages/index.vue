@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<span>Estou no Inicial</span>
+	<div class="home-container">
+		<Form />
 	</div>
 </template>
 
@@ -13,3 +13,9 @@ export default Vue.extend({
 	}
 });
 </script>
+
+<style lang="scss" scoped>
+.home-container {
+	padding: 1rem;
+}
+</style>
