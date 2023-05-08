@@ -1,24 +1,13 @@
 <template>
- 
     <div class="form-container">
-
         <span>Informações Básicas</span>
         <div class="form-header">
-            <pre>{{ menu }}</pre>
-            <pre>{{ $store.state.menu }}</pre>
-            <Input label="Nome do Restaurante" placeholder="Texto super massa aqui..." v-model="menu.restaurant_name"/>
-		    <Input label="Slogan" placeholder="Texto super massa aqui..." v-model="menu.slogan"/>
+            
+            <Input label="Nome do Restaurante" placeholder="O nome do seu restaurante..." v-model="restaurant_header.restaurant_name"/>
+		    <Input label="Slogan" placeholder="Coloque um texto bacana!" v-model="restaurant_header.slogan"/>
         </div>
 
-        <hr style="width: 50%; margin-top: 1rem;">
-
-        <Button title="Criar Grupo" @click.native="addGroup"/>
-
-        <div class="form-group" v-for="(group, index) in groups" :key="index">
-            <Input label="Nome do Grupo" placeholder=""/>
-            <Button title="Adicionar Itens"/>
-
-        </div>
+        
         
     </div>
 </template>
@@ -27,43 +16,22 @@ import Vue from 'vue'
 export default Vue.extend({
     data () {
         return {
-            menu: {
+            restaurant_header: {
                 restaurant_name: '',
-        slogan: '',
-        groups: [
-            {
-                name_group: '',
-                itens: [
-                    {
-                        name_item: '',
-                        description: '',
-                        price: ''
-                    }
-                ]
-            }
-        ]
+                slogan: '',
             }
         }
     },
 
-    methods: {
-        addGroup(){
-            let group = {
-                title: '',
-                product: []
-            }
-            this.groups.push(group)
-        },
+    watch: {
+        restaurant_header: {
+            handler(newValue) {
+                this.$store.commit('setRestaurantHeader', newValue)
+            }, deep: true
+        }
+
     },
 
-    watch: {
-        menu: {
-            handler(newVal) {
-                this.$store.commit('setMenu', newVal)
-            },
-            deep: true,
-        },
-    }
 
 })
 </script>

@@ -1,6 +1,6 @@
 <template>
 	<div class="home-container">
-		<Form />
+		<h2>Clique aqui para Editar</h2>
 	</div>
 </template>
 
