@@ -6,10 +6,10 @@
 
         <hr style="margin: 1rem 0"/>
         <div class="product-content">
-            <Input label="Item" placeholder="Nome do Produto"/>
-            <Input label="Descrição" placeholder="Informe mais detalhes..."/>
-            <Input label="Valor" placeholder="34,5" type="money"/>
-            <Button title="Adicionar" />
+            <Input label="Item" placeholder="Nome do Produto" v-model="name_item" />
+            <Input label="Descrição" placeholder="Informe mais detalhes..." v-model="description" />
+            <Input label="Valor" placeholder="34,5" type="money" v-model="price"/>
+            <Button title="Adicionar" @click.native="newItem"/>
         </div>
         
       </div>
@@ -23,11 +23,24 @@
       show: {
         type: Boolean,
         required: true
+      },
+      data () {
+        return {
+            name_item: '',
+            description: '',
+            price: ''
+        }
       }
     },
+
     methods: {
       close() {
         this.$emit('close');
+      },
+
+      newItem() {
+        console.log('dd');
+        
       }
     }
   })
