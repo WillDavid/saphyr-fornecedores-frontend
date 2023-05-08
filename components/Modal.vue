@@ -4,12 +4,14 @@
       <div class="modal-content">
         <Input label="Nome do Grupo" placeholder="aaa"/>
 
-        <hr />
+        <hr style="margin: 1rem 0"/>
         <div class="product-content">
-            <Input label="Nome do Grupo" placeholder="aaa"/>
+            <Input label="Item" placeholder="Nome do Produto"/>
+            <Input label="Descrição" placeholder="Informe mais detalhes..."/>
+            <Input label="Valor" placeholder="34,5" type="money"/>
+            <Button title="Adicionar" />
         </div>
         
-
       </div>
     </div>
   </template>
@@ -53,7 +55,7 @@
     }
     .modal-content {
         position: relative;
-        width: 50%;
+        width: 60%;
         max-width: 90%;
         max-height: 90%;
         overflow: auto;
@@ -61,6 +63,12 @@
         border-radius: 4px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         padding: 20px;
+
+        .product-content {
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+        }
     }
 
   }

@@ -14,7 +14,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .button-container {
     width: 7rem;
-    height: 2rem;
+    height: 2.5rem;
     border: none;
     border-radius: 0.3rem;
     color: var(--white);

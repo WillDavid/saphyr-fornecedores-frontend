@@ -1,5 +1,14 @@
 <template>
-  <div class="input-container">
+  <div class="input-container money" v-if="type=='money'">
+    <span>{{ label }}</span>
+    <div>
+      <span>R$</span>
+      <input type="number" :placeholder="placeholder" v-model="inputValue" @input="updateValue">
+    </div>
+    
+  </div>
+
+  <div class="input-container" v-else>
     <span>{{ label }}</span>
     <input type="text" :placeholder="placeholder" v-model="inputValue" @input="updateValue">
   </div>
@@ -11,7 +20,8 @@ export default Vue.extend({
     props: {
         label: String,
         placeholder: String,
-        value: String
+        value: String,
+        type: String,
     },
 
     data() {
@@ -43,5 +53,12 @@ export default Vue.extend({
         border: 1px solid var(--gray);
     }
 
+}
+
+.money {
+
+  input {
+    width: 5rem;
+  }
 }
 </style>
