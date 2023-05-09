@@ -35,6 +35,7 @@ export default Vue.extend({
     margin-top: 1rem;
     text-align: left;
     border-collapse: collapse;
+    width: 30%;
 
     td, th {
         font-weight: 400; 

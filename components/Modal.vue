@@ -114,22 +114,26 @@
         width: 70%;
         max-width: 90%;
         max-height: 90%;
-        overflow: auto;
         background-color: #fff;
         border-radius: 4px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         padding: 20px;
+        
 
         .modal-header {
           display: flex;
           justify-content: space-between;
           align-items: flex-end;
+          gap: 1rem;
+          flex-wrap: wrap;
+          
         }
 
         .product-content {
             display: flex;
             align-items: flex-end;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         table {
@@ -153,7 +157,7 @@
             font-size: 0.9rem;
             font-weight: 300;
             padding: 0.7rem;
-            min-width: 6.25rem;
+            // min-width: 6.25rem;
           }
         }
     }
