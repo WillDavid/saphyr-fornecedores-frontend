@@ -3,42 +3,7 @@ export const state = () => ({
     menu: {
         restaurant_name: '',
         slogan: '',
-
-        
-        groups: [
-            {
-                name_group: 'Sanduiches',
-                itens: [
-                    {
-                        name_item: 'X-salada',
-                        description: 'Pão bola, alface, tomate, cebola e 2 carnes de hamburguer',
-                        price: '2,34'
-                    },
-
-                    {
-                        name_item: 'X-cebola',
-                        description: 'Pão bola, alface, tomate, cebola e 2 carnes de hamburguer',
-                        price: '2,34'
-                    }
-                ]
-            },
-            {
-                name_group: 'X-saladas',
-                itens: [
-                    {
-                        name_item: 'X-salada',
-                        description: 'Pão bola, alface, tomate, cebola e 2 carnes de hamburguer',
-                        price: '2,34'
-                    },
-
-                    {
-                        name_item: 'X-cebola',
-                        description: 'Pão bola, alface, tomate, cebola e 2 carnes de hamburguer',
-                        price: '2,34'
-                    }
-                ]
-            }
-        ]
+        groups: []
 
     } 
 })
@@ -48,5 +13,11 @@ export const mutations = {
         state.menu.restaurant_name = payload.restaurant_name
         state.menu.slogan = payload.slogan
     },
+
+    setNewGroup(state, payload) {
+        state.menu.groups.push(payload)
+
+        console.log(state.menu.groups);
+    }
 
 }

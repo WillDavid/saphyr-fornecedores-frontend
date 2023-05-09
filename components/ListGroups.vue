@@ -1,5 +1,5 @@
 <template>
-    <table class="list-container">
+    <table class="list-container" v-if="groups.length !== 0">
         <tr>
             <th>Grupo</th>
             <th>Quantidade</th>

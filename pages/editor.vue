@@ -3,7 +3,7 @@
         <Form />
         <ListGroups />
         <Button title="Criar Grupo" @click.native="() => showModal = true"/>
-        <Modal :show="showModal" @close="() => showModal = false" />
+        <Modal v-if="showModal" @close="() => showModal = false" />
     </div>
 </template>
 <script lang="ts">
@@ -25,5 +25,8 @@ export default Vue.extend({
 
 .editor-container {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 </style>
