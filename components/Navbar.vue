@@ -7,7 +7,7 @@
         
         <div class="header-options">
             <nuxt-link to="/">Home</nuxt-link>
-            <nuxt-link to="/editor">Editor</nuxt-link>
+            <nuxt-link to="/about">Sobre</nuxt-link>
         </div>
     </div>
 </template>
@@ -45,7 +45,6 @@ export default Vue.extend({
             padding: 0.2rem 0.5rem;
             border-radius: 0.25rem;
         }
-
      
         a.nuxt-link-exact-active {
             background-color: rgba(0, 0, 0, 0.226);
