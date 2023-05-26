@@ -21,13 +21,19 @@
 import Vue from 'vue'
 export default Vue.extend({
   data() {
-    return {}
+    return {
+      
+    }
+  },
+
+  watch: {
+
   },
 
   methods: {
     close() {
       this.$emit('close');
-    }
+    },
   }
 })
 </script>
