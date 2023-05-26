@@ -2,7 +2,7 @@
     <div class="header-container">
         <div class="header-logo">
             <img src="~/static/icons/logo.svg" alt="">
-            <h4>Cardap.io</h4>
+            <h4>Senha.io</h4>
         </div>
         
         <div class="header-options">

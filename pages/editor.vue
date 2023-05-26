@@ -1,16 +1,13 @@
 <template>
     <div class="editor-container">
-        <Form />
-        <ListGroups />
-        <Button title="Criar Grupo" @click.native="() => showModal = true"/>
-        <Modal v-if="showModal" @close="() => showModal = false" />
+        <h2>Editor</h2>
     </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
     head:{
-		title: 'Editor - Cardap.io'
+		title: 'Senha.Io'
 	},
     data () {
         return {

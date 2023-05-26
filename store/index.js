@@ -4,8 +4,13 @@ export const state = () => ({
         restaurant_name: '',
         slogan: '',
         groups: []
-
-    } 
+    },
+    
+    new_password: {
+        description: '',
+        email: '',
+        password: '',
+    }
 })
 
 export const mutations = {
@@ -16,7 +21,6 @@ export const mutations = {
 
     setNewGroup(state, payload) {
         state.menu.groups.push(payload)
-
         console.log(state.menu.groups);
     }
 

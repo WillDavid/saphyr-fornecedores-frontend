@@ -1,6 +1,9 @@
 <template>
 	<div class="home-container">
-		<h2>Clique aqui para Editar</h2>
+		<!-- <Form /> -->
+        <ListGroups />
+        <Button title="Nova Senha" @click.native="() => showModal = true"/>
+        <Modal v-if="showModal" @close="() => showModal = false" />
 	</div>
 </template>
 
@@ -9,13 +12,24 @@ import Vue from "vue";
 
 export default Vue.extend({
 	head:{
-		title: 'Cardap.io'
-	}
+		title: 'Senha.io'
+	},
+	data () {
+        return {
+            showModal: false
+
+        }
+    }
 });
 </script>
 
 <style lang="scss" scoped>
 .home-container {
 	padding: 1rem;
+	padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
+
 </style>
