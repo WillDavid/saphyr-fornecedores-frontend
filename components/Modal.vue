@@ -18,6 +18,7 @@
   
 <script lang="ts">
 import Vue from "vue";
+import PasswordService from '../services/password-routes'
 
 interface NewPassword {
 	description: string;
@@ -45,9 +46,10 @@ export default Vue.extend({
 			if(this.passWordVerification()){
 				window.alert('ta faltando info')
 			} else {
-				this.$store.commit('setNewPassword', newPassword)
+				PasswordService.AddNewPassword(newPassword).then( (res) => {
+					this.$store.commit('setToggleListStatus')
+				})
 				this.close()
-				console.log(this.$store.state.listOfPassword)
 			}
 		},
 

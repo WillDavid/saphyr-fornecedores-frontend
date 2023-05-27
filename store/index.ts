@@ -1,21 +1,15 @@
-interface NewPassword {
-	description: string;
-	email: string;
-	password: string;
+interface State {
+	toggleListStatus: boolean
 }
 
-interface State {
-    listOfPassword: NewPassword[];
-  }
-
-  export const state = (): State => ({
-    listOfPassword: [],
-  });
+export const state = (): State => ({
+	toggleListStatus: true
+});
 
 export const mutations = {
 
-    setNewPassword(state: State, payload: NewPassword) {
-        console.log(payload);
-        state.listOfPassword.push(payload)
-    },
+	setToggleListStatus(state: State) {
+		state.toggleListStatus = !state.toggleListStatus
+	}
+
 }

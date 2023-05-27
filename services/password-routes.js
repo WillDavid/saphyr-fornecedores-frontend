@@ -7,7 +7,11 @@ export default {
 
     AddNewPassword: async (data) => {
         return await http.post(`/newPassword`, data)
-    }   
+    },
+
+    DeletePassword: async (id) => {
+        return await http.delete(`/password/delete/${id}`)
+    }
 
 
 }

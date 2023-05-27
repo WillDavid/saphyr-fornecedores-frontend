@@ -5,14 +5,13 @@
             <th>Email</th>
             <th>Senha</th>
         </tr>
-
         <tr v-for="(group, index) in groups" :key="index">
             <td>{{ group.description}}</td>
             <td>{{ group.email }}</td>
             <td>{{ group.password }}</td>
             <td class="icons">
                 <img src="~/static/icons/edit.svg" alt="Editar">
-                <img src="~/static/icons/trash.svg" alt="Apagar">
+                <img src="~/static/icons/trash.svg" alt="Apagar" @click="deletePassword(group.uid)">
             </td>
         </tr>
     </table>
@@ -25,7 +24,8 @@ import PasswordService from '../services/password-routes'
 interface GroupPasswords {
     description: string,
     email: string,
-    password: string
+    password: string,
+    uid: string
 }
 export default Vue.extend({
     data () {
@@ -34,14 +34,38 @@ export default Vue.extend({
         }
     },
 
+    methods: {
+        deletePassword (id: string) {
+            PasswordService.DeletePassword(id).then( (res) => {
+                this.$store.commit('setToggleListStatus')
+                window.alert('Deletado!')
+            })
+        },
+
+        ListPasswords() {
+            PasswordService.ListAllPasswords().then( (res) => {
+                this.groups = res.data
+            })
+        }
+    },
+
     async created () {
-        PasswordService.ListAllPasswords().then( (res) => {
-            this.groups = res.data
-        })
+        this.ListPasswords()
+    },
+
+    computed: {
+        trigger (): boolean {
+            return this.$store.state.toggleListStatus
+        }
+    },
+
+    watch: {
+        trigger() {
+            this.ListPasswords()
+        }
     }
 
     
-
 })
 </script>
 
@@ -66,6 +90,7 @@ export default Vue.extend({
             font-size: 0.8rem;
 
             img {
+                cursor: pointer;
                 width: 15px;
             }
         }
