@@ -11,6 +11,10 @@ export default {
 
     DeletePassword: async (id) => {
         return await http.delete(`/password/delete/${id}`)
+    },
+
+    EditPassword: async (id, data) => {
+        return await http.put(`/password/update/${id}`, data)
     }
 
 

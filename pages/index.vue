@@ -5,8 +5,8 @@
             <Button title="Nova Senha" @click.native="() => showModal = true" />
             <ListGroups />
         </div>
-
-        <Modal v-if="showModal" @close="() => showModal = false" />
+        
+        <ModalCreate v-if="showModal" @close="() => showModal = false"/>
 
     </div>
 </template>

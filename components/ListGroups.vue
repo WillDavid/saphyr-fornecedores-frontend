@@ -10,10 +10,14 @@
             <td>{{ group.email }}</td>
             <td>{{ group.password }}</td>
             <td class="icons">
-                <img src="~/static/icons/edit.svg" alt="Editar">
+                <img src="~/static/icons/edit.svg" alt="Editar" @click="() => showModal = true">
                 <img src="~/static/icons/trash.svg" alt="Apagar" @click="deletePassword(group.uid)">
             </td>
+
+            <ModalEdit v-if="showModal" @close="() => showModal = false" :passwordToEdit="group"/>
         </tr>
+
+        
     </table>
 </template>
 
@@ -30,27 +34,28 @@ interface GroupPasswords {
 export default Vue.extend({
     data () {
         return {
-            groups: [] as GroupPasswords []
+            groups: [] as GroupPasswords [],
+            showModal: false
         }
     },
 
     methods: {
-        deletePassword (id: string) {
-            PasswordService.DeletePassword(id).then( (res) => {
+        async deletePassword (id: string) {
+            await PasswordService.DeletePassword(id).then( (res) => {
                 this.$store.commit('setToggleListStatus')
                 window.alert('Deletado!')
             })
         },
 
-        ListPasswords() {
-            PasswordService.ListAllPasswords().then( (res) => {
+        async ListPasswords() {
+            await PasswordService.ListAllPasswords().then( (res) => {
                 this.groups = res.data
             })
         }
     },
 
     async created () {
-        this.ListPasswords()
+        await this.ListPasswords()
     },
 
     computed: {

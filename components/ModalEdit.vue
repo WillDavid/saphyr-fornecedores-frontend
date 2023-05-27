@@ -3,14 +3,14 @@
 		<div class="modal-background" @click="close"></div>
 		<div class="modal-content">
 			<div class="modal-header">
-				<span>Cadastrar nova senha</span>
+				<span>Editar esta Senha</span>
 			</div>
 
 			<div class="modal-body">
-				<Input label="De onde é essa senha?" placeholder="Facebook, Twitter, Instagram...?" v-model="newPassword.description" />
-				<Input type="email" label="Email" placeholder="Informe o email..." v-model="newPassword.email" />
-				<Input label="Senha" placeholder="batata123 é uma senha muito fraca..." v-model="newPassword.password" />
-				<Button title="Salvar Senha" @click.native="saveNewPassword(newPassword)" />
+				<Input label="De onde é essa senha?" placeholder="Facebook, Twitter, Instagram...?" v-model="editPassword.description" />
+				<Input type="email" label="Email" placeholder="Informe o email..." v-model="editPassword.email" />
+				<Input label="Senha" placeholder="batata123 é uma senha muito fraca..." v-model="editPassword.password" />
+				<Button title="Editar Senha" @click.native="edit(editPassword)" />
 			</div>
 		</div>
 	</div>
@@ -24,29 +24,38 @@ interface NewPassword {
 	description: string;
 	email: string;
 	password: string;
+	uid: string,
 }
 
 export default Vue.extend({
+	props: {
+		passwordToEdit: Object
+	},
 	data() {
 		return {
-			newPassword: {
-				description: "",
-				email: "",
-				password: "",
-			} as NewPassword,
-
+			editPassword: {} as NewPassword,
 		};
 	},
+
+	created() {
+		this.editPassword = this.passwordToEdit
+	},
+
 	methods: {
 		close(): void {
 			this.$emit("close");
 		},
 
-		saveNewPassword(newPassword: Object): void {
+		edit(password: Object): void {
 			if(this.passWordVerification()){
 				window.alert('ta faltando info')
 			} else {
-				PasswordService.AddNewPassword(newPassword).then( (res) => {
+				let passwordFormated = {
+					description: this.editPassword.description,
+					email: this.editPassword.email,
+					password: this.editPassword.password
+				}
+				PasswordService.EditPassword(this.editPassword.uid, passwordFormated).then( (res) => {
 					this.$store.commit('setToggleListStatus')
 				})
 				this.close()
@@ -54,7 +63,7 @@ export default Vue.extend({
 		},
 
 		passWordVerification(): boolean {
-			if(this.newPassword.description.trim().length === 0 || this.newPassword.email.trim().length === 0 || this.newPassword.password.trim().length === 0) {
+			if(this.editPassword.description.trim().length === 0 || this.editPassword.email.trim().length === 0 || this.editPassword.password.trim().length === 0) {
 				return true
 			}else {
 				return false
