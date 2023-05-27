@@ -8,7 +8,7 @@
 
 			<div class="modal-body">
 				<Input label="De onde é essa senha?" placeholder="Facebook, Twitter, Instagram...?" v-model="newPassword.description" />
-				<Input type="email" label="Email" placeholder="Informe mais detalhes..." v-model="newPassword.email" />
+				<Input type="email" label="Email" placeholder="Informe o email..." v-model="newPassword.email" />
 				<Input label="Senha" placeholder="batata123 é uma senha muito fraca..." v-model="newPassword.password" />
 				<Button title="Salvar Senha" @click.native="saveNewPassword(newPassword)" />
 			</div>
@@ -33,6 +33,7 @@ export default Vue.extend({
 				email: "",
 				password: "",
 			} as NewPassword,
+
 		};
 	},
 	methods: {
@@ -44,8 +45,9 @@ export default Vue.extend({
 			if(this.passWordVerification()){
 				window.alert('ta faltando info')
 			} else {
-				window.alert('tudo certo')
+				this.$store.commit('setNewPassword', newPassword)
 				this.close()
+				console.log(this.$store.state.listOfPassword)
 			}
 		},
 

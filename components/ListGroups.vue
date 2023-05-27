@@ -9,7 +9,7 @@
         <tr v-for="(group, index) in groups" :key="index">
             <td>{{ group.description}}</td>
             <td>{{ group.email }}</td>
-            <td>{{ group.senha }}</td>
+            <td>{{ group.password }}</td>
             <td class="icons">
                 <img src="~/static/icons/edit.svg" alt="Editar">
                 <img src="~/static/icons/trash.svg" alt="Apagar">
@@ -20,16 +20,24 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
+interface GroupPasswords {
+    description: string,
+    email: string,
+    password: string
+}
 export default Vue.extend({
     data () {
         return {
             groups: [
-                {description: 'Facebook', email: 'williamdavidalmeida@gmail.com', senha: '123456'},
-                {description: 'Instagram', email: 'williamdavidalmeida@gmail.com', senha: '123456'},
-                {description: 'Twitter', email: 'williamdavidalmeida@gmail.com', senha: '123456'}
-            ]
+                {description: 'Facebook', email: 'williamdavidalmeida@gmail.com', password: '123456'},
+                {description: 'Instagram', email: 'williamdavidalmeida@gmail.com', password: '123456'},
+                {description: 'Twitter', email: 'williamdavidalmeida@gmail.com', password: '123456'}
+            ] as GroupPasswords []
         }
     },
+
+    
 
 })
 </script>
@@ -48,6 +56,7 @@ export default Vue.extend({
             text-align: left;
             padding: 8px;
             padding-left: 0;
+            font-weight: 500;
         }
 
         td {
