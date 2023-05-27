@@ -20,6 +20,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import PasswordService from '../services/password-routes'
 
 interface GroupPasswords {
     description: string,
@@ -29,13 +30,15 @@ interface GroupPasswords {
 export default Vue.extend({
     data () {
         return {
-            groups: [
-                {description: 'Facebook', email: 'williamdavidalmeida@gmail.com', password: '123456'},
-                {description: 'Instagram', email: 'williamdavidalmeida@gmail.com', password: '123456'},
-                {description: 'Twitter', email: 'williamdavidalmeida@gmail.com', password: '123456'}
-            ] as GroupPasswords []
+            groups: [] as GroupPasswords []
         }
     },
+
+    async created () {
+        PasswordService.ListAllPasswords().then( (res) => {
+            this.groups = res.data
+        })
+    }
 
     
 

@@ -14,6 +14,7 @@
 <script lang="ts">
 import Vue from "vue";
 
+
 export default Vue.extend({
     head: {
         title: 'Senha.io'
@@ -22,7 +23,9 @@ export default Vue.extend({
         return {
             showModal: false
         }
-    }
+    },
+
+    
 });
 </script>
 
