@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Navbar />
+        <Navbar v-if="$nuxt.$route.name !== 'login'"/>
         <Nuxt />
     </div>
 </template>

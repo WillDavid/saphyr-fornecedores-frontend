@@ -49,7 +49,7 @@ export default Vue.extend({
 	background-color: var(--green);
 }
 
-.orangeBtn {
+.redBtn {
 	background-color: var(--red);
 }
 </style>

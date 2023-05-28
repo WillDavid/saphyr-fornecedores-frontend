@@ -37,6 +37,10 @@ export default Vue.extend({
 	gap: 0.3rem;
 	color: var(--text);
 
+	span {
+		font-size: 0.85rem;
+	}
+
 	input {
 		width: 15rem;
 		padding: 0.3rem;
