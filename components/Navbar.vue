@@ -2,12 +2,12 @@
     <div class="header-container">
         <div class="header-logo">
             <img src="~/static/icons/logo.svg" alt="">
-            <h4>Senha.io</h4>
+            <h4>Forncedores.io</h4>
         </div>
         
         <div class="header-options">
-            <nuxt-link to="/">Home</nuxt-link>
-            <nuxt-link to="/about">Sobre</nuxt-link>
+            <nuxt-link to="/">Listagem</nuxt-link>
+            <nuxt-link to="/about">Info</nuxt-link>
         </div>
     </div>
 </template>

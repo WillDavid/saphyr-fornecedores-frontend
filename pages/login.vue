@@ -2,7 +2,7 @@
     <div class="container-login">
         
         <div class="card-login">
-            <h4>Senha.io</h4>
+            <h4>CRUD.io</h4>
             <Input label="Email" placeholder="email@gmail.com"/>
             <Input label="Senha" placeholder="*****"/>
 

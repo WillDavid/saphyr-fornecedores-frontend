@@ -1,13 +1,13 @@
 <template>
     <div class="editor-container">
-        <h2>Editor</h2>
+        <h2>Hello There!</h2>
     </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
     head:{
-		title: 'Senha.Io'
+		title: 'Fornecedores.Io'
 	},
     data () {
         return {

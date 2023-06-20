@@ -15,7 +15,7 @@
 import Vue from "vue";
 export default Vue.extend({
     head: {
-        title: 'Senha.io'
+        title: 'Fornecedores.io'
     },
     data() {
         return {
