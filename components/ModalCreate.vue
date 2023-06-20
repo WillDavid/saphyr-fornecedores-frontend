@@ -3,13 +3,15 @@
 		<div class="modal-background" @click="close"></div>
 		<div class="modal-content">
 			<div class="modal-header">
-				<span>Cadastrar nova senha</span>
+				<span>Cadastrar Fornecedor</span>
 			</div>
 
 			<div class="modal-body">
-				<Input label="De onde é essa senha?" placeholder="Facebook, Twitter, Instagram...?" v-model="newPassword.description" />
-				<Input type="email" label="Email" placeholder="Informe o email..." v-model="newPassword.email" />
-				<Input label="Senha" placeholder="batata123 é uma senha muito fraca..." v-model="newPassword.password" />
+				<Input label="Fornecedor" placeholder="Fornecedor..." v-model="newPassword.name_fornecedor" />
+				<Input label="Endereço" placeholder="Rua popopo..." v-model="newPassword.endereco" />
+				<Input label="Telefone" placeholder="Telefone..." v-model="newPassword.telefone" />
+				<Input label="CNPJ" placeholder="cnpj..." v-model="newPassword.cnpj" />
+				
 				<Button title="Salvar Senha" @click.native="saveNewPassword(newPassword)" />
 			</div>
 		</div>
@@ -21,9 +23,10 @@ import Vue from "vue";
 import PasswordService from '../services/password-routes'
 
 interface NewPassword {
-	description: string;
-	email: string;
-	password: string;
+	name_fornecedor: string,
+	endereco: string,
+	telefone: string,
+	cnpj: string,
 }
 
 export default Vue.extend({
@@ -51,11 +54,7 @@ export default Vue.extend({
 		},
 
 		passWordVerification(): boolean {
-			if(this.newPassword.description.trim().length === 0 || this.newPassword.email.trim().length === 0 || this.newPassword.password.trim().length === 0) {
-				return true
-			}else {
-				return false
-			}
+			return false
 		}
 	},
 });

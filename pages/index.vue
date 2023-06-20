@@ -2,7 +2,7 @@
     <div class="home-container">
 
         <div class="content-list">
-            <Button title="Nova Senha" @click.native="() => showModal = true" />
+            <Button title="Novo Fornecedor" @click.native="() => showModal = true" />
             <ListGroups />
         </div>
         

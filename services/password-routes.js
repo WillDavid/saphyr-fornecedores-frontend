@@ -16,6 +16,4 @@ export default {
     EditPassword: async (id, data) => {
         return await http.put(`/password/update/${id}`, data)
     }
-
-
 }

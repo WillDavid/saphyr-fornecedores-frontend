@@ -1,15 +1,20 @@
 <template>
     <table class="list-container" v-if="groups.length !== 0">
        
+        <h3>Listagem de Fornecedores</h3>
+
         <tr>
-            <th>Site</th>
-            <th>Email</th>
-            <th>Senha</th>
+            <th>Fornecedor</th>
+            <th>Endereco</th>
+            <th>Telefone</th>
+            <th>CNPJ</th>
         </tr>
+
         <tr v-for="(group, index) in groups" :key="index">
-            <td>{{ group.description}}</td>
-            <td>{{ group.email }}</td>
-            <td>{{ group.password }}</td>
+            <td>{{ group.name_fornecedor}}</td>
+            <td>{{ group.endereco }}</td>
+            <td>{{ group.telefone }}</td>
+            <td>{{ group.cnpj }}</td>
             <td class="icons">
                 <img src="~/static/icons/edit.svg" alt="Editar" @click="() => showModal = true">
                 <img src="~/static/icons/trash.svg" alt="Apagar" @click="deletePassword(group.uid)">
@@ -27,10 +32,10 @@ import Vue from 'vue'
 import PasswordService from '../services/password-routes'
 
 interface GroupPasswords {
-    description: string,
-    email: string,
-    password: string,
-    uid: string
+    name_fornecedor: string,
+	endereco: string,
+	telefone: string,
+	cnpj: string,
 }
 export default Vue.extend({
     data () {
