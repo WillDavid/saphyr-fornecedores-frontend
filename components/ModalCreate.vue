@@ -12,8 +12,8 @@
 				<Input label="Telefone" placeholder="Telefone..." type="tel" v-model="supplier.telefone" />
 				<Input label="CNPJ" placeholder="cnpj..."  type="number" v-model="supplier.cnpj" />
 				<Input label="E-mail" placeholder="cnpj..." type="email" v-model="supplier.email" />
-				<Select @selected="handleSelected" />
-				
+				<Select label="Região" @selected="handleSelectedRegion" :options="optionsRegion"/>
+				<Select label="Categoria" @selected="handleSelectedCategory" :options="optionsCategory"/>
 				<Button title="Cadastrar" @click.native="saveNewPupplier(supplier)" />
 			</div>
 		</div>
@@ -22,7 +22,7 @@
   
 <script lang="ts">
 import Vue from "vue";
-import PasswordService from '../services/password-routes'
+import SupplierService from '../services/password-routes'
 
 interface NewSupplier {
 	name_fornecedor: string,
@@ -31,13 +31,28 @@ interface NewSupplier {
 	cnpj: string,
 	email: string,
 	region: string,
+	category: string,
 }
 
 export default Vue.extend({
 	data() {
 		return {
 			supplier: {} as NewSupplier,
-
+			optionsRegion: [
+				{ label: 'Norte', value: 'Norte' },
+				{ label: 'Nordeste', value: 'Nordeste' },
+				{ label: 'Centro-Oeste', value: 'Centro-Oeste' },
+				{ label: 'Sudeste', value: 'Sudeste' },
+				{ label: 'Sul', value: 'Sul' }
+			],
+			optionsCategory: [
+				{ label: 'Outros', value: 'Outros' },
+				{ label: 'Paisagismo', value: 'Paisagismo' },
+				{ label: 'Limpeza', value: 'Limpeza' },
+				{ label: 'Manutenção', value: 'Manutenção' },
+				{ label: 'Segurança', value: 'Segurança' }
+			],
+			
 		};
 	},
 	methods: {
@@ -50,7 +65,7 @@ export default Vue.extend({
 			if(this.supplierVerification()){
 				window.alert('ta faltando info')
 			} else {
-				await PasswordService.AddNewPassword(newSupplier).then( (res) => {
+				await SupplierService.AddNewSupplier(newSupplier).then( (res) => {
 					this.$store.commit('setToggleListStatus')
 					this.close()
 				})
@@ -65,9 +80,12 @@ export default Vue.extend({
 			return false
 		},
 
-		handleSelected(option: string) {
+		handleSelectedRegion(option: string) {
       		this.supplier.region = option;
-			console.log(this.supplier)
+    	},
+
+		handleSelectedCategory(option: string) {
+      		this.supplier.category = option;
     	}
 	},
 });

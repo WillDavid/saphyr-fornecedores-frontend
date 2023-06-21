@@ -1,6 +1,6 @@
 <template>
     <div class="input-container">
-        <span>Região</span>
+        <span>{{ label }}</span>
       <select @change="onSelect">
         <option v-for="option in options" :key="option.value" :value="option.value">{{ option.label }}</option>
       </select>
@@ -9,17 +9,11 @@
   
   <script>
   export default {
-    data() {
-      return {
-        options: [
-          { label: 'Norte', value: 'Norte' },
-          { label: 'Nordeste', value: 'Nordeste' },
-          { label: 'Centro-Oeste', value: 'Centro-Oeste' },
-          { label: 'Sudeste', value: 'Sudeste' },
-          { label: 'Sul', value: 'Sul' }
-        ]
-      };
+    props: {
+      options: Array,
+      label: String
     },
+
     methods: {
       onSelect(event) {
         const selectedOption = event.target.value;

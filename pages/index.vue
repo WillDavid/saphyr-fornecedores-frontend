@@ -27,15 +27,16 @@
 
 <script lang="ts">
 import Vue from "vue";
-import PasswordService from '../services/password-routes'
+import SupplierService from '../services/password-routes'
 
-interface GroupPasswords {
+interface GroupSupplier {
     name_fornecedor: string,
 	endereco: string,
 	telefone: string,
 	cnpj: string,
 	email: string,
 	region: string,
+    category: string
 }
 
 
@@ -45,18 +46,18 @@ export default Vue.extend({
     },
     data() {
         return {
-            groups: [] as GroupPasswords [],
+            groups: [] as GroupSupplier [],
             showModal: false,
             isFiltered: false,
-            groupFiltered: [] as GroupPasswords []
+            groupFiltered: [] as GroupSupplier []
         }
     },
 
     methods: {
         
 
-        async ListPasswords() {
-            await PasswordService.ListAllPasswords().then( (res) => {
+        async ListSuppliers() {
+            await SupplierService.ListAllSuppliers().then( (res) => {
                 this.groups = res.data
             })
         },
@@ -83,7 +84,7 @@ export default Vue.extend({
     },
 
     async created () {
-        await this.ListPasswords()
+        await this.ListSuppliers()
     },
 
     computed: {
@@ -94,7 +95,7 @@ export default Vue.extend({
 
     watch: {
         trigger() {
-            this.ListPasswords()
+            this.ListSuppliers()
         }
     }
 
