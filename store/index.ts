@@ -1,14 +1,14 @@
 interface State {
-	toggleListStatus: boolean
+	toggleListStatus: boolean,
 }
 
 export const state = (): State => ({
-	toggleListStatus: true
+	toggleListStatus: true,
 });
 
 export const mutations = {
 
-	setToggleListStatus(state: State) {
+	setToggleListStatus(state: State, payload?: any) {
 		state.toggleListStatus = !state.toggleListStatus
 	}
 

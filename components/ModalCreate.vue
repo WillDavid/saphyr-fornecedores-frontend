@@ -7,12 +7,14 @@
 			</div>
 
 			<div class="modal-body">
-				<Input label="Fornecedor" placeholder="Fornecedor..." v-model="newPassword.name_fornecedor" />
-				<Input label="Endereço" placeholder="Rua popopo..." v-model="newPassword.endereco" />
-				<Input label="Telefone" placeholder="Telefone..." v-model="newPassword.telefone" />
-				<Input label="CNPJ" placeholder="cnpj..." v-model="newPassword.cnpj" />
+				<Input label="Fornecedor" placeholder="Fornecedor..." v-model="supplier.name_fornecedor" />
+				<Input label="Endereço" placeholder="Rua popopo..." v-model="supplier.endereco" />
+				<Input label="Telefone" placeholder="Telefone..." type="tel" v-model="supplier.telefone" />
+				<Input label="CNPJ" placeholder="cnpj..."  type="number" v-model="supplier.cnpj" />
+				<Input label="E-mail" placeholder="cnpj..." type="email" v-model="supplier.email" />
+				<Select @selected="handleSelected" />
 				
-				<Button title="Salvar Senha" @click.native="saveNewPassword(newPassword)" />
+				<Button title="Cadastrar" @click.native="saveNewPupplier(supplier)" />
 			</div>
 		</div>
 	</div>
@@ -22,17 +24,19 @@
 import Vue from "vue";
 import PasswordService from '../services/password-routes'
 
-interface NewPassword {
+interface NewSupplier {
 	name_fornecedor: string,
 	endereco: string,
 	telefone: string,
 	cnpj: string,
+	email: string,
+	region: string,
 }
 
 export default Vue.extend({
 	data() {
 		return {
-			newPassword: {} as NewPassword,
+			supplier: {} as NewSupplier,
 
 		};
 	},
@@ -41,11 +45,12 @@ export default Vue.extend({
 			this.$emit("close");
 		},
 
-		async saveNewPassword(newPassword: Object) {
-			if(this.passWordVerification()){
+		async saveNewPupplier(newSupplier: Object) {
+			console.log(this.supplier)
+			if(this.supplierVerification()){
 				window.alert('ta faltando info')
 			} else {
-				await PasswordService.AddNewPassword(newPassword).then( (res) => {
+				await PasswordService.AddNewPassword(newSupplier).then( (res) => {
 					this.$store.commit('setToggleListStatus')
 					this.close()
 				})
@@ -53,9 +58,17 @@ export default Vue.extend({
 			}
 		},
 
-		passWordVerification(): boolean {
+		supplierVerification(): boolean {
+			if(!this.supplier.region) {
+				this.supplier.region = 'Norte'
+			}
 			return false
-		}
+		},
+
+		handleSelected(option: string) {
+      		this.supplier.region = option;
+			console.log(this.supplier)
+    	}
 	},
 });
 </script>

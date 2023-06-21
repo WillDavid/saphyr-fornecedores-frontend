@@ -1,20 +1,22 @@
 <template>
     <table class="list-container" v-if="groups.length !== 0">
-       
-        <h3>Listagem de Fornecedores</h3>
-
         <tr>
             <th>Fornecedor</th>
             <th>Endereco</th>
             <th>Telefone</th>
             <th>CNPJ</th>
+            <th>Email</th>
+            <th>Região</th>
         </tr>
 
         <tr v-for="(group, index) in groups" :key="index">
+            
             <td>{{ group.name_fornecedor}}</td>
             <td>{{ group.endereco }}</td>
             <td>{{ group.telefone }}</td>
             <td>{{ group.cnpj }}</td>
+            <td>{{ group.email }}</td>
+            <td>{{ group.region }}</td>
             <td class="icons">
                 <img src="~/static/icons/edit.svg" alt="Editar" @click="() => showModal = true">
                 <img src="~/static/icons/trash.svg" alt="Apagar" @click="deletePassword(group.uid)">
@@ -23,24 +25,22 @@
             <ModalEdit v-if="showModal" @close="() => showModal = false" :passwordToEdit="group"/>
         </tr>
 
-        
     </table>
+
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+
 import PasswordService from '../services/password-routes'
 
-interface GroupPasswords {
-    name_fornecedor: string,
-	endereco: string,
-	telefone: string,
-	cnpj: string,
-}
 export default Vue.extend({
+    props: {
+        groups: Object
+    },
+
     data () {
         return {
-            groups: [] as GroupPasswords [],
             showModal: false
         }
     },
@@ -52,28 +52,6 @@ export default Vue.extend({
                 window.alert('Deletado!')
             })
         },
-
-        async ListPasswords() {
-            await PasswordService.ListAllPasswords().then( (res) => {
-                this.groups = res.data
-            })
-        }
-    },
-
-    async created () {
-        await this.ListPasswords()
-    },
-
-    computed: {
-        trigger (): boolean {
-            return this.$store.state.toggleListStatus
-        }
-    },
-
-    watch: {
-        trigger() {
-            this.ListPasswords()
-        }
     }
 
     

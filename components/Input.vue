@@ -1,8 +1,7 @@
 <template>
 	<div class="input-container">
 		<span>{{ label }}</span>
-		<input type="email" v-if="type==='email'" :placeholder="placeholder" v-model="inputValue" @input="updateValue">
-		<input type="text" v-else :placeholder="placeholder" v-model="inputValue" @input="updateValue">
+		<input :type="type" :placeholder="placeholder" v-model="inputValue" @input="updateValue">
 	</div>
 </template>
 
@@ -26,6 +25,10 @@ export default Vue.extend({
 		updateValue(): void {
 			this.$emit('input', this.inputValue);
 		},
+
+		updateRegion():void {
+			this.$emit('select', this.inputValue)
+		}
 	},
 });
 </script>
