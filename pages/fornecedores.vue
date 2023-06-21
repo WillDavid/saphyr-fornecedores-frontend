@@ -172,6 +172,7 @@ export default Vue.extend({
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: flex-end;
         flex-wrap: wrap;
         gap: 1rem;
 
