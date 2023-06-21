@@ -2,11 +2,12 @@
     <div class="container-login">
         
         <div class="card-login">
+            <img src="~/static/icons/logo.svg" alt="">
             <h4>Saphyr Fornecedores</h4>
-            <Input label="Login" placeholder="Usuario..."/>
-            <Input label="Senha" placeholder="*****"/>
+            <Input label="Login" placeholder="Usuario..." class="colorBtn"/>
+            <Input label="Senha" placeholder="*****" class="colorBtn"/>
 
-            <Button title="Entrar" colorBtn="red" style="width: 100%;margin-top: 1rem;"></Button>
+            <Button title="Entrar" colorBtn="blue" style="width: 100%;margin-top: 1rem;"></Button>
         </div>
     </div>
 </template>
@@ -26,6 +27,9 @@ export default Vue.extend({
     display: flex;
     justify-content: center;
     align-items: center;
+    
+
+    
 
     .card-login {
         padding: 2rem;
@@ -33,13 +37,24 @@ export default Vue.extend({
         border-radius: 0.25rem;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 0.5rem;
+        background-color: var(--red);
+
+        img {
+            width: 2.5rem;
+        }
+
+        .colorBtn {
+            color: var(--white);
+        }
 
 
         h4 {
             margin-bottom: 0.5rem;
             text-align: center;
-            color: var(--red);
+            color: var(--white);
         }
     }
 }
