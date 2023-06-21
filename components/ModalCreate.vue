@@ -68,6 +68,9 @@ export default Vue.extend({
 				await SupplierService.AddNewSupplier(newSupplier).then( (res) => {
 					this.$store.commit('setToggleListStatus')
 					this.close()
+					window.alert('Fornecedor cadastrado com sucesso!')
+				}).catch ( (error) => {
+					window.alert('Ocorreu um erro, tente novamente em breve!')
 				})
 				
 			}
@@ -76,6 +79,10 @@ export default Vue.extend({
 		supplierVerification(): boolean {
 			if(!this.supplier.region) {
 				this.supplier.region = 'Norte'
+			}
+
+			if(!this.supplier.category) {
+				this.supplier.category = 'Outros'
 			}
 			return false
 		},
