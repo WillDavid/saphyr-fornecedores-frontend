@@ -1,5 +1,6 @@
 <template>
     <div class="input-container">
+      <span>{{ label }}</span>
       <select @change="onSelect">
         <option v-for="option in options" :key="option.value" :value="option.value">{{ option.label }}</option>
       </select>
@@ -8,17 +9,9 @@
   
   <script>
   export default {
-    data() {
-      return {
-        options: [
-          { label: 'Todos', value: 'Todos' },
-          { label: 'Norte', value: 'Norte' },
-          { label: 'Nordeste', value: 'Nordeste' },
-          { label: 'Centro-Oeste', value: 'Centro-Oeste' },
-          { label: 'Sudeste', value: 'Sudeste' },
-          { label: 'Sul', value: 'Sul' }
-        ]
-      };
+    props: {
+      options: Array,
+      label: String
     },
     methods: {
       onSelect(event) {
@@ -42,10 +35,10 @@
 
     select {
         width: 10rem;
-		padding: 0.3rem;
-		height: 2.5rem;
-		border-radius: 0.3rem;
-		border: 1px solid var(--gray);
+        padding: 0.3rem;
+        height: 2rem;
+        border-radius: 0.3rem;
+        border: 1px solid var(--gray);
     }
 }
 </style>

@@ -4,7 +4,12 @@
         <h3>Fornecedores</h3>
 
         <div class="buttons">
-            <FilterSelect @selected="handleSelected"/>
+
+            <div class="filter">
+                <FilterSelect @selected="handleSelectedRegion" :options="optionsRegion" label="Região"/>
+                <FilterSelect @selected="handleSelectedCategory" :options="optionsCategory" label="Categoria"/>
+            </div>
+            
             <Button title="Novo Fornecedor" @click.native="() => showModal = true" />
         </div>
 
@@ -27,7 +32,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import SupplierService from '../services/password-routes'
+import SupplierService from '../services/suppliers-routes'
 
 interface GroupSupplier {
     name_fornecedor: string,
@@ -49,9 +54,29 @@ export default Vue.extend({
             groups: [] as GroupSupplier [],
             showModal: false,
             isFiltered: false,
-            groupFiltered: [] as GroupSupplier []
+            groupFiltered: [] as GroupSupplier [],
+            region: 'Todos',
+            category: 'Todos',
+
+            optionsRegion: [
+                { label: 'Todos', value: 'Todos' },
+				{ label: 'Norte', value: 'Norte' },
+				{ label: 'Nordeste', value: 'Nordeste' },
+				{ label: 'Centro-Oeste', value: 'Centro-Oeste' },
+				{ label: 'Sudeste', value: 'Sudeste' },
+				{ label: 'Sul', value: 'Sul' }
+			],
+			optionsCategory: [
+				{ label: 'Todos', value: 'Todos' },
+				{ label: 'Paisagismo', value: 'Paisagismo' },
+				{ label: 'Limpeza', value: 'Limpeza' },
+				{ label: 'Manutenção', value: 'Manutenção' },
+				{ label: 'Segurança', value: 'Segurança' },
+                { label: 'Outros', value: 'Outros' }
+			],
         }
     },
+
 
     methods: {
         
@@ -62,24 +87,43 @@ export default Vue.extend({
             })
         },
 
-        FilteredList(option: string) {
+        FilteredList() {
             this.groupFiltered = []
-            this.groups.map( (item) => {
-                if(item.region === option) {
-                    this.groupFiltered.push(item)
-                }
-            })
-        },
 
-        handleSelected(option: any) {
-            if(option === 'Todos') {
+            if(this.region === 'Todos' && this.category == 'Todos') {
                 this.isFiltered = false
-                console.log('sad')
             } else {
                 this.isFiltered = true
-                this.FilteredList(option)
+                this.groups.map ( (item) => {
+                if(this.region !== 'Todos') {
+                    if(this.category !== 'Todos') {
+                        
+                        if(item.region === this.region && item.category === this.category) {
+                            this.groupFiltered.push(item)
+                        }
+                    } else {
+                        if(item.region === this.region) {
+                            this.groupFiltered.push(item)
+                        }
+                    }
 
+                } else {
+                    if(item.category === this.category) {
+                            this.groupFiltered.push(item)
+                        }
+                }
+            })
             }
+            
+            
+        },
+
+        handleSelectedRegion(option: any) {
+            this.region = option
+        },
+
+        handleSelectedCategory (option: any) {
+            this.category = option
         }
     },
 
@@ -96,6 +140,14 @@ export default Vue.extend({
     watch: {
         trigger() {
             this.ListSuppliers()
+        },
+
+        region(newValue) {
+            this.FilteredList()
+        },
+
+        category(newValue) {
+            this.FilteredList()
         }
     }
 
@@ -120,6 +172,11 @@ export default Vue.extend({
         width: 100%;
         display: flex;
         justify-content: space-between;
+
+        .filter {
+            display: flex;
+            gap: 1rem;
+        }
     }
 
     @media(max-width: 800px) {

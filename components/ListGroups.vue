@@ -34,7 +34,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-import SupplierService from '../services/password-routes'
+import SupplierService from '../services/suppliers-routes'
 
 export default Vue.extend({
     props: {

@@ -1,9 +1,9 @@
 <template>
     <div class="input-container">
         <span>{{ label }}</span>
-      <select @change="onSelect">
-        <option v-for="option in options" :key="option.value" :value="option.value">{{ option.label }}</option>
-      </select>
+        <select @change="onSelect">
+          <option v-for="option in options" :key="option.value" :value="option.value">{{ option.label }}</option>
+        </select>
     </div>
   </template>
   
