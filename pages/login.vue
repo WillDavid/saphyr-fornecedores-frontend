@@ -24,10 +24,13 @@ export default Vue.extend({
 
     methods: {
         loginReq() {
+            this.login = this.login.toLowerCase()
 
-            if(this.login === 'login' && this.senha === '123') {
+            if(this.login === 'login' && this.senha === '123'){
                 localStorage.setItem("loginStatus", "isConnected");
                 this.$nuxt.$router.push('/')
+            } else {
+                window.alert('Usuario não encontrado! Verifque seu login e senha')
             }
         }
     },
