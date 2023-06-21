@@ -2,8 +2,8 @@
     <div class="container-login">
         
         <div class="card-login">
-            <h4>CRUD.io</h4>
-            <Input label="Email" placeholder="email@gmail.com"/>
+            <h4>Saphyr Fornecedores</h4>
+            <Input label="Login" placeholder="Usuario..."/>
             <Input label="Senha" placeholder="*****"/>
 
             <Button title="Entrar" colorBtn="red" style="width: 100%;margin-top: 1rem;"></Button>

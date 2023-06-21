@@ -7,7 +7,7 @@
         
         <div class="header-options">
             <nuxt-link to="/">Home</nuxt-link>
-            <nuxt-link to="/about">Sobre</nuxt-link>
+            <nuxt-link to="/Login">Sair</nuxt-link>
         </div>
     </div>
 </template>
@@ -43,6 +43,7 @@ export default Vue.extend({
             color: var(--white);
             text-decoration: none;
             padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
             border-radius: 0.25rem;
         }
      

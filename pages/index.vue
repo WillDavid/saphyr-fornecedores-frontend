@@ -41,7 +41,7 @@ interface GroupPasswords {
 
 export default Vue.extend({
     head: {
-        title: 'Fornecedores.io'
+        title: 'Saphyr Fornecedores'
     },
     data() {
         return {

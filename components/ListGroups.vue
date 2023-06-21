@@ -7,6 +7,7 @@
             <th>CNPJ</th>
             <th>Email</th>
             <th>Região</th>
+            <th>Opções</th>
         </tr>
 
         <tr v-for="(group, index) in groups" :key="index">
