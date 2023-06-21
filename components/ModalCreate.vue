@@ -138,7 +138,17 @@ export default Vue.extend({
 			flex-wrap: wrap;
 			gap: 1rem;
 			align-items: end;
+
+			@media (max-width: 670px) {
+				flex-wrap: nowrap;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				margin: 0 2rem;
+			}
 		}
+
+
 	}
 }
 </style>

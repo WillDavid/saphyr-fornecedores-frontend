@@ -166,25 +166,27 @@ export default Vue.extend({
     width: 100vw;
     gap: 1rem;
     width: 100%;
-    padding: 1rem 4rem;
+    padding: 1rem 2rem;
 
     .buttons {
         width: 100%;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
 
         .filter {
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
         }
     }
 
-    @media(max-width: 800px) {
-        padding: 1rem 1rem;
+    @media(max-width: 680px) {
+        padding: 1rem 3rem;
     }
 
     @media(max-width: 480px) {
-        padding: 1rem 1rem;
+        padding: 1rem 2rem;
     }
 }
 </style>

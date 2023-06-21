@@ -1,6 +1,6 @@
 <template>
     <table class="list-container" v-if="groups.length !== 0">
-        <tr>
+        <thead>
             <th>Fornecedor</th>
             <th>Endereco</th>
             <th>Telefone</th>
@@ -9,17 +9,17 @@
             <th>Categoria</th>
             <th>Região</th>
             <th>Opções</th>
-        </tr>
+        </thead>
 
         <tr v-for="(group, index) in groups" :key="index">
-            <td>{{ group.name_fornecedor}}</td>
-            <td>{{ group.endereco }}</td>
-            <td>{{ group.telefone }}</td>
-            <td>{{ group.cnpj }}</td>
-            <td>{{ group.email }}</td>
-            <td>{{ group.category }}</td>
-            <td>{{ group.region }}</td>
-            <td class="icons">
+            <td data-title="Fornecedor">{{ group.name_fornecedor}}</td>
+            <td data-title="Endereço">{{ group.endereco }}</td>
+            <td data-title="Telefone">{{ group.telefone }}</td>
+            <td data-title="Cnpj">{{ group.cnpj }}</td>
+            <td data-title="Email">{{ group.email }}</td>
+            <td data-title="Categoria">{{ group.category }}</td>
+            <td data-title="Região">{{ group.region }}</td>
+            <td data-title="Opções" class="icons">
                 <!-- <img src="~/static/icons/edit.svg" alt="Editar" @click="() => showModal = true"> -->
                 <img src="~/static/icons/trash.svg" alt="Apagar" @click="deleteCategory(group.uid)">
             </td>
@@ -66,7 +66,8 @@ export default Vue.extend({
     border-collapse: collapse;
     width: 100%;
 
-    tr {
+
+    tr, thead {
         border-bottom: 1px solid var(--red);
         height: 2.5rem;
 
@@ -86,7 +87,31 @@ export default Vue.extend({
             }
         }
     }
-
     
+    @media (max-width: 800px) {
+
+        thead {
+            display: none;
+        }
+
+        tr {
+            td {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 0.4rem;
+            }
+
+            td:last-of-type {
+                margin-bottom: 1.5rem;
+            }
+
+
+            td:before {
+                content: attr(data-title);
+                display: block;
+            }
+        }
+    }
 }
 </style>
