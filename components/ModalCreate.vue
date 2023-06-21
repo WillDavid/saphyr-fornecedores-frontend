@@ -116,11 +116,12 @@ export default Vue.extend({
 		position: relative;
 		width: auto;
 		max-width: 80%;
-		max-height: 80%;
+		max-height: 90%;
 		background-color: #fff;
 		border-radius: 4px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 		padding: 20px;
+		overflow-y: auto;
 		
 
 		.modal-header {
