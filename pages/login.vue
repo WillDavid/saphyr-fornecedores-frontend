@@ -4,10 +4,9 @@
         <div class="card-login">
             <img src="~/static/icons/logo.svg" alt="">
             <h4>Saphyr Fornecedores</h4>
-            <Input label="Login" placeholder="Usuario..." class="colorBtn"/>
-            <Input label="Senha" type="password" placeholder="*****" class="colorBtn"/>
-
-            <Button title="Entrar" colorBtn="blue" style="width: 100%;margin-top: 1rem;"></Button>
+            <Input label="Login" placeholder="Usuario..." class="colorBtn" v-model="login"/>
+            <Input label="Senha" type="password" placeholder="*****" class="colorBtn" v-model="senha"/>
+            <Button title="Entrar" colorBtn="blue" style="width: 100%;margin-top: 1rem;" @click.native="loginReq" />
         </div>
     </div>
 </template>
@@ -15,6 +14,31 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
+
+    data () {
+        return {
+            login: '',
+            senha: ''
+        }
+    },
+
+    methods: {
+        loginReq() {
+
+            if(this.login === 'login' && this.senha === '123') {
+                localStorage.setItem("loginStatus", "isConnected");
+                this.$nuxt.$router.push('/')
+            }
+        }
+    },
+
+    async created () {
+        if(localStorage.getItem("loginStatus")){
+            localStorage.removeItem("loginStatus");
+         }
+        
+    }
+    
 
 })
 </script>

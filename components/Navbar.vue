@@ -7,14 +7,18 @@
         
         <div class="header-options">
             <nuxt-link to="/">Home</nuxt-link>
-            <nuxt-link to="/Login">Sair</nuxt-link>
+            <nuxt-link to="/Login" @click.native="logoutReq">Sair</nuxt-link>
         </div>
     </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-    
+    methods: {
+        logoutReq () {
+            localStorage.removeItem("loginStatus");
+        }
+    }
 })
 </script>
 

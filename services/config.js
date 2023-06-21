@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: "http://localhost:3500",
+  baseURL: "https://saphyr-fornecedores-backend.onrender.com",
   headers: {
     Accept: "application/json",
     Content: "application/json",

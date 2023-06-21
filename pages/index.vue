@@ -128,7 +128,14 @@ export default Vue.extend({
     },
 
     async created () {
-        await this.ListSuppliers()
+        if(!localStorage.getItem("loginStatus")){
+            this.$nuxt.$router.push('login')
+        } else {
+            await this.ListSuppliers()
+        }
+        
+
+        
     },
 
     computed: {
