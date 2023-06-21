@@ -5,7 +5,7 @@
             <img src="~/static/icons/logo.svg" alt="">
             <h4>Saphyr Fornecedores</h4>
             <Input label="Login" placeholder="Usuario..." class="colorBtn"/>
-            <Input label="Senha" placeholder="*****" class="colorBtn"/>
+            <Input label="Senha" type="password" placeholder="*****" class="colorBtn"/>
 
             <Button title="Entrar" colorBtn="blue" style="width: 100%;margin-top: 1rem;"></Button>
         </div>

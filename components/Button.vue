@@ -32,7 +32,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .btn {
-	width: 7rem;
+	width: 8rem;
 	height: 2.5rem;
 	border: none;
 	border-radius: 0.3rem;
