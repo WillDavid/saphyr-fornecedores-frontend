@@ -10,8 +10,8 @@
 				<Input label="Fornecedor" placeholder="Fornecedor..." v-model="supplier.name_fornecedor" />
 				<Input label="Endereço" placeholder="Rua popopo..." v-model="supplier.endereco" />
 				<Input label="Telefone" placeholder="Telefone..." type="tel" v-model="supplier.telefone" />
-				<Input label="CNPJ" placeholder="cnpj..."  type="number" v-model="supplier.cnpj" />
-				<Input label="E-mail" placeholder="cnpj..." type="email" v-model="supplier.email" />
+				<Input label="CNPJ" placeholder="cnpj..." v-model="supplier.cnpj" />
+				<Input label="E-mail" placeholder="email..." type="email" v-model="supplier.email" />
 				<Select label="Região" @selected="handleSelectedRegion" :options="optionsRegion"/>
 				<Select label="Categoria" @selected="handleSelectedCategory" :options="optionsCategory"/>
 				<Button title="Cadastrar" @click.native="saveNewPupplier(supplier)" />
