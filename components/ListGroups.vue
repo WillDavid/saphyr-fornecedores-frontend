@@ -99,7 +99,9 @@ export default Vue.extend({
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                margin-top: 0.4rem;
+                margin-top: 0.5rem;
+                text-align: right;
+           
             }
 
             td:last-of-type {
