@@ -129,7 +129,7 @@ export default Vue.extend({
 
     async created () {
         if(!localStorage.getItem("loginStatus")){
-            this.$nuxt.$router.push('login')
+            this.$nuxt.$router.push('/login')
         } else {
             await this.ListSuppliers() 
         }
