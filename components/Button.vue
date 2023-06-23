@@ -25,6 +25,10 @@ export default Vue.extend({
 			} else {
 				return this.color = 'blueBtn'
 			}
+		},
+
+		changeColor() {
+			this.color = "redBtn"
 		}
 	}
 })

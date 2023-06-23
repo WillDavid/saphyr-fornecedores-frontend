@@ -2,23 +2,23 @@
     <table class="list-container" v-if="groups.length !== 0">
         <thead>
             <th>Fornecedor</th>
-            <th>Endereco</th>
-            <th>Telefone</th>
             <th>CNPJ</th>
+            <th>Telefone</th>  
             <th>Email</th>
             <th>Categoria</th>
             <th>Região</th>
+            <th>Nota</th>
             <th>Opções</th>
         </thead>
 
         <tr v-for="(group, index) in groups" :key="index">
             <td data-title="Fornecedor">{{ group.name_fornecedor}}</td>
-            <td data-title="Endereço">{{ group.endereco }}</td>
-            <td data-title="Telefone">{{ group.telefone }}</td>
             <td data-title="Cnpj">{{ group.cnpj }}</td>
+            <td data-title="Telefone">{{ group.telefone }}</td>
             <td data-title="Email">{{ group.email }}</td>
             <td data-title="Categoria">{{ group.category }}</td>
             <td data-title="Região">{{ group.region }}</td>
+            <td data-title="Nota">{{ group.rating }}/5</td>
             <td data-title="Opções" class="icons">
                 <!-- <img src="~/static/icons/edit.svg" alt="Editar" @click="() => showModal = true"> -->
                 <img src="~/static/icons/trash.svg" alt="Apagar" @click="deleteCategory(group.uid)">

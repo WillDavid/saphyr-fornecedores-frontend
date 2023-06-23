@@ -36,12 +36,12 @@ import SupplierService from '../services/suppliers-routes'
 
 interface GroupSupplier {
     name_fornecedor: string,
-	endereco: string,
 	telefone: string,
 	cnpj: string,
 	email: string,
 	region: string,
-    category: string
+    category: string,
+    rating: string
 }
 
 

@@ -8,12 +8,12 @@
 
 			<div class="modal-body">
 				<Input label="Fornecedor" placeholder="Fornecedor..." v-model="supplier.name_fornecedor" />
-				<Input label="Endereço" placeholder="Rua popopo..." v-model="supplier.endereco" />
-				<Input label="Telefone" placeholder="Telefone..." type="tel" v-model="supplier.telefone" />
 				<Input label="CNPJ" placeholder="cnpj..." v-model="supplier.cnpj" />
+				<Input label="Telefone" placeholder="Telefone..." type="tel" v-model="supplier.telefone" />
 				<Input label="E-mail" placeholder="email..." type="email" v-model="supplier.email" />
 				<Select label="Região" @selected="handleSelectedRegion" :options="optionsRegion"/>
 				<Select label="Categoria" @selected="handleSelectedCategory" :options="optionsCategory"/>
+				<Select label="Avaliação" @selected="handleSelectedRating" :options="optionsServicesRating"/>
 				<Button title="Cadastrar" @click.native="saveNewPupplier(supplier)" />
 			</div>
 		</div>
@@ -26,12 +26,12 @@ import SupplierService from '../services/suppliers-routes'
 
 interface NewSupplier {
 	name_fornecedor: string,
-	endereco: string,
 	telefone: string,
 	cnpj: string,
 	email: string,
 	region: string,
 	category: string,
+	rating: string
 }
 
 export default Vue.extend({
@@ -52,6 +52,15 @@ export default Vue.extend({
 				{ label: 'Manutenção', value: 'Manutenção' },
 				{ label: 'Segurança', value: 'Segurança' }
 			],
+
+			optionsServicesRating: [
+				{ label: '0', value: '0' },
+				{ label: '1', value: '1' },
+				{ label: '2', value: '2' },
+				{ label: '3', value: '3' },
+				{ label: '4', value: '4' },
+				{ label: '5', value: '5' }
+			],
 			
 		};
 	},
@@ -63,7 +72,7 @@ export default Vue.extend({
 		async saveNewPupplier(newSupplier: Object) {
 			console.log(this.supplier)
 			if(this.supplierVerification()){
-				window.alert('ta faltando info')
+				window.alert('Você deve cadastrar ao menos o nome do fornecedor e CNPJ')
 			} else {
 				await SupplierService.AddNewSupplier(newSupplier).then( (res) => {
 					this.$store.commit('setToggleListStatus')
@@ -84,7 +93,32 @@ export default Vue.extend({
 			if(!this.supplier.category) {
 				this.supplier.category = 'Outros'
 			}
-			return false
+
+			if(!this.supplier.rating) {
+				this.supplier.rating = '0'
+			}
+
+			if(!this.supplier.email || this.supplier.email.length === 0) {
+				this.supplier.email = 'Não cadastrado...'
+			}
+
+			if(!this.supplier.telefone || this.supplier.telefone.length === 0) {
+				this.supplier.telefone = 'Não cadastrado...'
+			}
+
+
+			if(!this.supplier.name_fornecedor || this.supplier.name_fornecedor.length === 0) {
+				return true
+			} else {
+
+				if(!this.supplier.cnpj || this.supplier.cnpj.length === 0) {
+					return true
+				} else {
+					return false
+				}
+				
+			}
+
 		},
 
 		handleSelectedRegion(option: string) {
@@ -93,6 +127,10 @@ export default Vue.extend({
 
 		handleSelectedCategory(option: string) {
       		this.supplier.category = option;
+    	},
+
+		handleSelectedRating(option: string) {
+      		this.supplier.rating = option;
     	}
 	},
 });
