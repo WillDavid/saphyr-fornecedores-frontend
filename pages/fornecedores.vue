@@ -136,6 +136,10 @@ export default Vue.extend({
         
     },
 
+    async mounted () {
+        await this.ListSuppliers()
+    },
+
     computed: {
         trigger (): boolean {
             return this.$store.state.toggleListStatus
