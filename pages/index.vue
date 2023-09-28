@@ -8,7 +8,7 @@
 import Vue from "vue";
 export default Vue.extend({
     head: {
-        title: 'Saphyr Fornecedores'
+        title: 'Alquia Fornecedores'
     },
 
     async created () {

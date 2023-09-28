@@ -47,7 +47,7 @@ interface GroupSupplier {
 
 export default Vue.extend({
     head: {
-        title: 'Saphyr Fornecedores'
+        title: 'Alqia Fornecedores'
     },
     data() {
         return {

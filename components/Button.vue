@@ -18,12 +18,12 @@ export default Vue.extend({
 
 	methods: {
 		verifyColor(buttonColor: string): string {
-			if (buttonColor === 'green') {
-				return this.color = 'greenBtn'
+			if (buttonColor === 'blue') {
+				return this.color = 'blueBtn'
 			} else if (buttonColor === 'red') {
 				return this.color = 'redBtn'
 			} else {
-				return this.color = 'blueBtn'
+				return this.color = 'greenBtn'
 			}
 		},
 

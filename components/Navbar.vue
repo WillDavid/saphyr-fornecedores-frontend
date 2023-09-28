@@ -1,8 +1,8 @@
 <template>
     <div class="header-container">
         <div class="header-logo">
-            <img src="~/static/icons/logo.svg" alt="">
-            <h4>Saphyr Fornecedores</h4>
+            <img src="~/static/icon-logo.svg" alt="">
+            <h4>Alqia Fornecedores</h4>
         </div>
         
         <div class="header-options">
@@ -27,7 +27,7 @@ export default Vue.extend({
 .header-container {
     height: 7vh;
     width: 100vw;
-    background-color: var(--red);
+    background-color: var(--green);
     padding: 0 1rem 0 1rem;
     display: flex;
     justify-content: space-between;
@@ -38,6 +38,10 @@ export default Vue.extend({
         display: flex;
         align-items: center;
         gap: 0.3rem;
+
+        img {
+            width: 5vh;
+        }
     }
     .header-options {
         display: flex;

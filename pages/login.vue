@@ -2,11 +2,10 @@
     <div class="container-login">
         
         <div class="card-login">
-            <img src="~/static/icons/logo.svg" alt="">
-            <h4>Saphyr Fornecedores</h4>
+            <img src="~/static/icons/alquia-logo.png" alt="">
             <Input label="Login" placeholder="Usuario..." class="colorBtn" v-model="login"/>
             <Input label="Senha" type="password" placeholder="*****" class="colorBtn" v-model="senha"/>
-            <Button title="Entrar" colorBtn="blue" style="width: 100%;margin-top: 1rem;" @click.native="loginReq" />
+            <Button title="Entrar" style="width: 100%;margin-top: 1rem;" @click.native="loginReq" />
         </div>
     </div>
 </template>
@@ -67,22 +66,16 @@ export default Vue.extend({
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
-        background-color: var(--red);
+        background-color: var(--white);
 
         img {
-            width: 2.5rem;
+            width: 13rem;
         }
 
         .colorBtn {
             color: var(--white);
         }
 
-
-        h4 {
-            margin-bottom: 0.5rem;
-            text-align: center;
-            color: var(--white);
-        }
     }
 }
 </style>
